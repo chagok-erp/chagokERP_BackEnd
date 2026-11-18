@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: chagok-erp-backend
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/chagok_erp}
+    username: ${DB_USERNAME:chagok}
+    password: ${DB_PASSWORD:chagok-local}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  session:
+    cookie:
+      http-only: true
+      same-site: lax
+      secure: ${SESSION_COOKIE_SECURE:false}
+server:
+  port: ${SERVER_PORT:8080}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
